@@ -1,0 +1,16 @@
+:concurrency: 3
+:timeout: 60
+:verbose: true
+:queues:
+  - critical
+  - default
+  - mailers
+  - active_storage_analysis
+  - active_storage_purge
+  - low
+
+:schedule:
+  mark_carts_abandoned:
+    cron: '*/2 * * * *'  # Executa a cada 2 minutos
+    class: MarkCartAsAbandonedJob
+    description: 'Marca carrinhos sem atividade há mais de 3 horas como abandonados'
